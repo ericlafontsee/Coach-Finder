@@ -1,3 +1,3 @@
 <template>
-    Register
+    Register 
 </template>
