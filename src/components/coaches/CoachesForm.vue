@@ -36,13 +36,14 @@
 </template>
 <script>
     export default {
+        emits: ['save-data'],
         data(){
             return {
                 firstName: '',
                 lastName: '',
-                descriptions: '',
+                description: '',
                 rate: null,
-                areas: [ ]
+                areas: []
             }
         },
         methods: {
@@ -52,9 +53,9 @@
                     last: this.lastName,
                     desc: this.description,
                     rate: this.rate,
-                    area: this.areas
+                    areas: this.areas
                 }
-                console.log(formData);
+                this.$emit('save-data', formData);
             }
         }
     }
