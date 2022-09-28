@@ -22,7 +22,7 @@ export default {
       return '/coaches/' + this.id + '/contact';
     },
     coachDetailsLink() {
-      return '/coaches' + this.id;
+      return '/coaches/' + this.id;
     },
   },
 };
