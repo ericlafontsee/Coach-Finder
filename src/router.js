@@ -19,7 +19,7 @@ const router = createRouter({
     },
     { path: '/register', component: CoachRegistration },
     { path: '/requests', component: RequestsReceived },
-    { path: '/notFound(*) ', component: NotFound },
+    { path: '/:notFound(.*)', component: NotFound }
   ],
 });
 
