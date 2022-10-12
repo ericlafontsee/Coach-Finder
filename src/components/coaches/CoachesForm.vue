@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control" :class="{ invalid: !firstName.isValid }">
+    <div class="form-control" :class="{invalid: !firstName.isValid}">
       <label for="firstname">Firstname</label>
       <input
         type="text"
@@ -10,7 +10,7 @@
       />
       <p v-if="!firstName.isValid">Firstname must not be empty.</p>
     </div>
-    <div class="form-control" :class="{ invalid: !lastName.isValid }">
+    <div class="form-control" :class="{invalid: !lastName.isValid}">
       <label for="lastname">Lastname</label>
       <input
         type="text"
@@ -20,27 +20,22 @@
       />
       <p v-if="!lastName.isValid">Lastname must not be empty.</p>
     </div>
-    <div class="form-control" :class="{ invalid: !description.isValid }">
+    <div class="form-control" :class="{invalid: !description.isValid}">
       <label for="description">Description</label>
       <textarea
         id="description"
-        row="5"
+        rows="5"
         v-model.trim="description.val"
         @blur="clearValidity('description')"
       ></textarea>
       <p v-if="!description.isValid">Description must not be empty.</p>
     </div>
-    <div class="form-control" :class="{ invalid: !rate.isValid }">
+    <div class="form-control" :class="{invalid: !rate.isValid}">
       <label for="rate">Hourly Rate</label>
-      <input
-        type="number"
-        id="rate"
-        v-model.number="rate.val"
-        @blur="clearValidity('rate')"
-      />
+      <input type="number" id="rate" v-model.number="rate.val" @blur="clearValidity('rate')" />
       <p v-if="!rate.isValid">Rate must be greater than 0.</p>
     </div>
-    <div class="form-control" :class="{ invalid: !areas.isValid }">
+    <div class="form-control" :class="{invalid: !areas.isValid}">
       <h3>Areas of Expertise</h3>
       <div>
         <input
@@ -78,6 +73,7 @@
     <base-button>Register</base-button>
   </form>
 </template>
+
 <script>
 export default {
   emits: ['save-data'],
@@ -135,9 +131,11 @@ export default {
     },
     submitForm() {
       this.validateForm();
+
       if (!this.formIsValid) {
         return;
       }
+
       const formData = {
         first: this.firstName.val,
         last: this.lastName.val,
@@ -145,11 +143,13 @@ export default {
         rate: this.rate.val,
         areas: this.areas.val,
       };
+
       this.$emit('save-data', formData);
     },
   },
 };
 </script>
+
 <style scoped>
 .form-control {
   margin: 0.5rem 0;
